@@ -27,9 +27,30 @@ namespace NKNK
             ani = GetComponent<Animator>();
             rig = GetComponent<Rigidbody2D>();
         }
+        // 更新事件:約 60 FPS (Frame per second)
+        private void Update()
+        {
+            GetInput();
+        }
         #endregion
 
         #region 方法:較複雜的行為,例如移動功能 更新動畫
+
+
+
+
+
+        private void GetInput()
+        {
+
+
+
+
+
+            float h = Input.GetAxis("Horizontal");
+
+            print("水平軸向值:" + h);
+        }
         #endregion
     }
 }
