@@ -26,6 +26,13 @@ public class WeaponSystem : MonoBehaviour
             }
         }
 
+        private void Start()
+        {
+
+            Physics2D.IgnoreLayerCollision(3, 6);
+            Physics2D.IgnoreLayerCollision(6, 6);
+        }
+
         private void Update()
         {
             SpawnWeapon();
@@ -35,12 +42,14 @@ public class WeaponSystem : MonoBehaviour
 
         private void SpawnWeapon()
         {
-            print("經過時間:" + timer);
+            //print("經過時間:" + timer);
 
             if(timer >= dataWeapon.interval)
             {
-                Instantiate(dataWeapon.goWeapon);
-
+                int random = Random.Range(0, dataWeapon.v2SpawnPoint.Length);
+                Vector3 pos = transform.position + dataWeapon.v2SpawnPoint[random];
+                GameObject temp = Instantiate(dataWeapon.goWeapon, pos, Quaternion.identity);
+                temp.GetComponent<Rigidbody2D>().AddForce(dataWeapon.v3Direction * dataWeapon.speedFly);
                 timer = 0;
             }
 
