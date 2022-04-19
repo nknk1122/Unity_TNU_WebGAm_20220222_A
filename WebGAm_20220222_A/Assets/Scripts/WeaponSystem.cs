@@ -30,6 +30,7 @@ public class WeaponSystem : MonoBehaviour
 
             Physics2D.IgnoreLayerCollision(3, 6);
             Physics2D.IgnoreLayerCollision(6, 6);
+            Physics2D.IgnoreLayerCollision(6, 0);
         }
 
         private void Update()
