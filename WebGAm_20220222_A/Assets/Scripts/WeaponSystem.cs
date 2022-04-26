@@ -6,7 +6,8 @@ public class WeaponSystem : MonoBehaviour
 {
         [SerializeField, Header("武器資料")]
         private DataWeapon dataWeapon;
-
+        [SerializeField, Header("武器刪除時間"), Range(0, 5)]
+        private float weaponDestoryTime = 3.5f;
 
 
         private float timer;
@@ -30,7 +31,7 @@ public class WeaponSystem : MonoBehaviour
 
             Physics2D.IgnoreLayerCollision(3, 6);
             Physics2D.IgnoreLayerCollision(6, 6);
-            Physics2D.IgnoreLayerCollision(6, 0);
+            Physics2D.IgnoreLayerCollision(6, 7);
         }
 
         private void Update()
@@ -51,6 +52,7 @@ public class WeaponSystem : MonoBehaviour
                 GameObject temp = Instantiate(dataWeapon.goWeapon, pos, Quaternion.identity);
                 temp.GetComponent<Rigidbody2D>().AddForce(dataWeapon.v3Direction * dataWeapon.speedFly);
                 timer = 0;
+                Destroy(temp, weaponDestoryTime);
             }
 
             else
