@@ -26,6 +26,8 @@ namespace NKNK
         public float exeDropProbability = 100;
         [Header("掉落經驗值類型")]
         public TypeExp typeExp;
+        [Header("靠近目標後停止距離"), Range(0, 30)]
+        public float stopDistance = 3;
     }
 
 
